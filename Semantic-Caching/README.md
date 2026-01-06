@@ -1,4 +1,4 @@
-# 🚀 Semantic Caching for LLM Applications
+# Semantic Caching for LLM Applications
 
 A comprehensive project demonstrating how semantic caching dramatically improves LLM application performance by reducing latency and API costs through intelligent question-answer matching.
 

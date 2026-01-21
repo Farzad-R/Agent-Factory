@@ -1,6 +1,6 @@
 # Semantic Caching for LLM Applications
 
-A comprehensive project demonstrating how semantic caching dramatically improves LLM application performance by reducing latency and API costs through intelligent question-answer matching.
+This project shows how semantic caching dramatically improves LLM application performance by reducing latency and API costs through intelligent question-answer matching.
 
 [![YouTube Tutorial](https://img.shields.io/badge/YouTube-Watch%20Tutorial-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/@airoundtable)
 

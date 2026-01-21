@@ -158,7 +158,7 @@ streamlit run app.py
 See semantic caching in production:
 
 ```bash
-cd rag_agent_with_cache
+cd RAG_chatbot_with_semantic_caching
 
 # Install dependencies
 pip install -r requirements.txt
@@ -167,7 +167,7 @@ pip install -r requirements.txt
 export OPENAI_API_KEY='your-key'
 
 # Create vectorstore (one time)
-python prepare_data_chroma.py
+python prepare_chromadb.py
 
 # Run chatbot
 streamlit run streamlit_app.py

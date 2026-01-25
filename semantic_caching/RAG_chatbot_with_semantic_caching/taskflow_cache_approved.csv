@@ -1,0 +1,25 @@
+question,answer
+How do I create a new project?,"To create a new project, click the '+' button in the top right corner of your dashboard, select 'New Project', enter your project name and description, then click 'Create'. You can also set project visibility and add team members during creation."
+Can I export my data?,"Yes, you can export your project data in multiple formats. Go to Project Settings > Export Data, then choose from CSV, JSON, or PDF formats. Premium users also have access to Excel export with advanced formatting options."
+What are the pricing plans?,"TaskFlow offers three tiers: Free (up to 3 projects, 5 team members), Professional ($12/month per user, unlimited projects, 50 team members), and Enterprise (custom pricing, unlimited everything, dedicated support, SSO integration)."
+How do I reset my password?,"Click 'Forgot Password' on the login page, enter your email address, and we'll send you a password reset link. The link expires in 24 hours. If you don't receive it, check your spam folder or contact support@taskflow.com."
+Can I integrate with Slack?,"Yes! Go to Settings > Integrations > Slack, click 'Connect to Slack', and authorize the connection. You'll receive notifications for task assignments, comments, and deadlines directly in your chosen Slack channels."
+How do I assign tasks?,"Open any task, click the 'Assignee' field, and select one or more team members from the dropdown. You can also drag tasks to team members in Board view, or use '@mentions' in task descriptions to notify specific people."
+What's the file upload limit?,"Free tier users can upload files up to 10MB per file. Professional users get 100MB per file, and Enterprise users have a 500MB limit. All tiers support common file types including PDFs, images, videos, and documents."
+How do I delete my account?,"To delete your account, go to Settings > Account > Delete Account. You'll need to confirm by entering your password and typing 'DELETE' in the confirmation field. Note: This action is permanent and cannot be undone. All your data will be deleted within 30 days."
+Can I automate repetitive workflows?,"Yes, you can automate repetitive workflows using various tools and technologies. Automation can help streamline processes, reduce errors, and save time. Common methods for automating workflows include:
+
+1. **Workflow Automation Software**: Tools like Zapier, Integromat, or Microsoft Power Automate allow you to create automated workflows between different applications.
+
+2. **Scripting and Programming**: Writing scripts in languages like Python, JavaScript, or Bash can automate tasks on your computer or server.
+
+3. **Robotic Process Automation (RPA)**: RPA tools like UiPath or Automation Anywhere can automate rule-based tasks across various applications.
+
+4. **Task Management Tools**: Many task management platforms offer automation features to trigger actions based on specific events (e.g., Trello, Asana).
+
+5. **Custom APIs**: If you have access to APIs, you can create custom integrations that automate workflows between different systems.
+
+6. **Business Process Management (BPM) Software**: BPM tools help design, execute, monitor, and optimize business processes.
+
+If you have a specific workflow in mind, I can provide more tailored advice or examples!"
+Can I filter tasks by multiple criteria?,"Yes, you can filter tasks by multiple criteria such as assignee, priority, status, tags, and due date. You can also save these custom filter combinations as 'Views' for quick access. Premium users have the option to share these filter views with team members."

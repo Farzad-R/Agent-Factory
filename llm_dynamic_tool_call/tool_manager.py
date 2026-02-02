@@ -62,7 +62,6 @@ class ToolManager:
                 }
             }
         }
-
         return openai_schema
 
     def get_tool_category(self, tool_name: str) -> str:

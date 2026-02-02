@@ -3,6 +3,7 @@ docs_vector_embedding
 automation
 Self-RAG
 .chainlit
+storage
 =======
 LangGraph
 storage

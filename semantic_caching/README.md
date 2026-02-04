@@ -9,7 +9,7 @@ This project shows how semantic caching dramatically improves LLM application pe
 ## 📺 Video Tutorial
 
 **Watch the full walkthrough:**  
-[🎥 YouTube Link - Semantic Caching Deep Dive](YOUR_YOUTUBE_LINK_HERE)
+[🎥 YouTube Link - Semantic Caching Deep Dive](https://youtu.be/TlMNI0hTtYU?si=weBvJ0-MffMaP_PU)
 
 ---
 

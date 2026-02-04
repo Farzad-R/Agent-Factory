@@ -35,4 +35,4 @@ We tested 4 different approaches (naive, category-based routing, semantic retrie
 
 The project includes a complete Jupyter notebook with 11 test cases, detailed metrics, comparison charts, and a production-ready ChromaDB implementation. You'll see exactly which approach works best and why.
 
-**YouTube video:** [Coming soon]
+**YouTube video:** [Link](https://youtu.be/TlMNI0hTtYU?si=weBvJ0-MffMaP_PU)

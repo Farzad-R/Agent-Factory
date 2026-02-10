@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naive Approach - Tool Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #1E293B;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #64748B;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .diagram-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .stats {
+            margin-top: 20px;
+            padding: 20px;
+            background: #FEF2F2;
+            border-left: 4px solid #DC2626;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .stats h3 {
+            color: #991B1B;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .stats ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #991B1B;
+        }
+        .stats li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Approach 1: Naive</h1>
+        <p class="subtitle">Pass all 70 tools to the LLM</p>
+        
+        <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["User Query<br/>'Process refund for order<br/>and notify customer'"] --> B[LLM Agent]
+    
+    C1[Tool 1] --> B
+    C2[Tool 2] --> B
+    C3[Tool 3] --> B
+    C4[...] --> B
+    C5[Tool 68] --> B
+    C6[Tool 69] --> B
+    C7[Tool 70] --> B
+    
+    B --> D["Selected Tools:<br/>process_refund<br/>send_customer_notification"]
+    
+    style A fill:#E0F2FE,stroke:#0284C7,stroke-width:3px,color:#0C4A6E
+    style B fill:#FEF3C7,stroke:#F59E0B,stroke-width:3px,color:#92400E
+    style D fill:#DCFCE7,stroke:#10B981,stroke-width:3px,color:#065F46
+    
+    style C1 fill:#F1F5F9,stroke:#94A3B8,stroke-width:2px,color:#475569
+    style C2 fill:#F1F5F9,stroke:#94A3B8,stroke-width:2px,color:#475569
+    style C3 fill:#F1F5F9,stroke:#94A3B8,stroke-width:2px,color:#475569
+    style C4 fill:#F1F5F9,stroke:#94A3B8,stroke-width:2px,color:#475569
+    style C5 fill:#F1F5F9,stroke:#94A3B8,stroke-width:2px,color:#475569
+    style C6 fill:#F1F5F9,stroke:#94A3B8,stroke-width:2px,color:#475569
+    style C7 fill:#F1F5F9,stroke:#94A3B8,stroke-width:2px,color:#475569
+            </div>
+        </div>
+        
+        <div class="stats">
+            <h3>⚠️ Problems:</h3>
+            <ul>
+                <li><strong>3,663 tokens</strong> per query (just for tool schemas)</li>
+                <li><strong>4x higher cost</strong> than optimized approaches</li>
+                <li><strong>Model overwhelm</strong> - 70 options create noise</li>
+                <li><strong>Not even the most accurate</strong> (92.4% F1)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 100,
+                rankSpacing: 80
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieval-Based Approach - Tool Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #1E293B;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #64748B;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .diagram-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .stats {
+            margin-top: 20px;
+            padding: 20px;
+            background: #ECFDF5;
+            border-left: 4px solid #10B981;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .stats h3 {
+            color: #065F46;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .stats ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #065F46;
+        }
+        .stats li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Approach 3: Retrieval-Based 🏆</h1>
+        <p class="subtitle">Use ChromaDB to find top 10 relevant tools</p>
+        
+        <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["User Query<br/>'Process refund for order<br/>and notify customer'"] --> B[Embed Query]
+    
+    B --> C[ChromaDB<br/>Vector Search]
+    
+    D1[Tool 1 + Embedding] -.-> C
+    D2[Tool 2 + Embedding] -.-> C
+    D3[Tool 3 + Embedding] -.-> C
+    D4[...] -.-> C
+    D5[Tool 70 + Embedding] -.-> C
+    
+    C -->|Semantic<br/>Similarity| E[Top 10 Most<br/>Relevant Tools]
+    
+    E --> F[1. process_refund]
+    E --> G[2. send_notification]
+    E --> H[3. cancel_order]
+    E --> I[4. get_order_status]
+    E --> J[...]
+    E --> K[10. apply_discount]
+    
+    F --> L[LLM Agent]
+    G --> L
+    H --> L
+    I --> L
+    J --> L
+    K --> L
+    
+    L --> M["Selected Tools:<br/>process_refund<br/>send_customer_notification"]
+    
+    style A fill:#E0F2FE,stroke:#0284C7,stroke-width:3px,color:#0C4A6E
+    style B fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#92400E
+    style C fill:#DBEAFE,stroke:#3B82F6,stroke-width:3px,color:#1E40AF
+    style E fill:#E0E7FF,stroke:#6366F1,stroke-width:3px,color:#312E81
+    style L fill:#FEF3C7,stroke:#F59E0B,stroke-width:3px,color:#92400E
+    style M fill:#DCFCE7,stroke:#10B981,stroke-width:3px,color:#065F46
+    
+    style D1 fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    style D2 fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    style D3 fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    style D4 fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    style D5 fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    
+    style F fill:#10B981,stroke:#059669,stroke-width:2px,color:#FFFFFF
+    style G fill:#10B981,stroke:#059669,stroke-width:2px,color:#FFFFFF
+    style H fill:#10B981,stroke:#059669,stroke-width:2px,color:#FFFFFF
+    style I fill:#10B981,stroke:#059669,stroke-width:2px,color:#FFFFFF
+    style J fill:#10B981,stroke:#059669,stroke-width:2px,color:#FFFFFF
+    style K fill:#10B981,stroke:#059669,stroke-width:2px,color:#FFFFFF
+            </div>
+        </div>
+        
+        <div class="stats">
+            <h3>🏆 Winner - Why It Works:</h3>
+            <ul>
+                <li><strong>Best accuracy: 93.9% F1</strong> (beats naive!)</li>
+                <li><strong>82% fewer tokens</strong> (646 vs 3,663)</li>
+                <li><strong>78% cost reduction</strong> ($0.0014 vs $0.0064)</li>
+                <li><strong>No router dependency</strong> - no single point of failure</li>
+                <li><strong>Handles cross-category queries</strong> seamlessly</li>
+                <li><strong>Semantic understanding > keywords</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 80,
+                rankSpacing: 100
+            }
+        });
+    </script>
+</body>
+</html>

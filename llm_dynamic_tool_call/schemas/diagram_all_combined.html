@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Management Approaches - Complete Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: #F8FAFC;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .header h1 {
+            color: #1E293B;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #64748B;
+            font-size: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .approach {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .approach h2 {
+            color: #1E293B;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .approach .subtitle {
+            color: #64748B;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        .stats {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .stats h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        .stats ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .stats li {
+            margin: 4px 0;
+        }
+        .stats-naive {
+            background: #FEF2F2;
+            border-left: 4px solid #DC2626;
+        }
+        .stats-naive h3, .stats-naive ul {
+            color: #991B1B;
+        }
+        .stats-category {
+            background: #FEF9C3;
+            border-left: 4px solid #EAB308;
+        }
+        .stats-category h3, .stats-category ul {
+            color: #854D0E;
+        }
+        .stats-retrieval {
+            background: #ECFDF5;
+            border-left: 4px solid #10B981;
+        }
+        .stats-retrieval h3, .stats-retrieval ul {
+            color: #065F46;
+        }
+        .stats-hybrid {
+            background: #F5F3FF;
+            border-left: 4px solid #8B5CF6;
+        }
+        .stats-hybrid h3, .stats-hybrid ul {
+            color: #5B21B6;
+        }
+        .pros {
+            color: #065F46;
+        }
+        .cons {
+            color: #991B1B;
+        }
+        .winner-badge {
+            display: inline-block;
+            background: #10B981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Tool Management Approaches</h1>
+        <p>How to handle 70+ tools for LLM agents</p>
+    </div>
+
+    <div class="grid">
+        <!-- APPROACH 1: NAIVE -->
+        <div class="approach">
+            <h2>1. Naive Approach</h2>
+            <p class="subtitle">Pass all 70 tools to the LLM</p>
+            
+            <div class="mermaid">
+graph TD
+    A["User Query"] --> B[LLM Agent]
+    C1[Tool 1] --> B
+    C2[Tool 2] --> B
+    C3[...] --> B
+    C4[Tool 70] --> B
+    B --> D["Selected<br/>Tools"]
+    
+    style A fill:#E0F2FE,stroke:#0284C7,stroke-width:2px
+    style B fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px
+    style D fill:#DCFCE7,stroke:#10B981,stroke-width:2px
+    style C1 fill:#F1F5F9,stroke:#94A3B8
+    style C2 fill:#F1F5F9,stroke:#94A3B8
+    style C3 fill:#F1F5F9,stroke:#94A3B8
+    style C4 fill:#F1F5F9,stroke:#94A3B8
+            </div>
+            
+            <div class="stats stats-naive">
+                <h3>⚠️ Problems:</h3>
+                <ul>
+                    <li><strong>3,663 tokens</strong> per query</li>
+                    <li><strong>4x higher cost</strong></li>
+                    <li><strong>92.4% F1</strong> - not best</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- APPROACH 2: CATEGORY -->
+        <div class="approach">
+            <h2>2. Category-Based</h2>
+            <p class="subtitle">Route to category → use ~15 tools</p>
+            
+            <div class="mermaid">
+graph TD
+    A["User Query"] --> B[Router]
+    B --> C[Category<br/>~15 tools]
+    B -.-> D[Other<br/>Categories]
+    C --> E[LLM Agent]
+    E --> F["Selected<br/>Tools"]
+    
+    style A fill:#E0F2FE,stroke:#0284C7,stroke-width:2px
+    style B fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px
+    style C fill:#DBEAFE,stroke:#3B82F6,stroke-width:2px
+    style D fill:#F1F5F9,stroke:#CBD5E1,stroke-dasharray: 5 5
+    style E fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px
+    style F fill:#DCFCE7,stroke:#10B981,stroke-width:2px
+            </div>
+            
+            <div class="stats stats-category">
+                <h3>⚖️ Trade-offs:</h3>
+                <ul>
+                    <li class="pros">✓ <strong>76% token reduction</strong></li>
+                    <li class="pros">✓ <strong>73% cost savings</strong></li>
+                    <li class="cons">✗ <strong>Router fails 27%</strong></li>
+                    <li class="cons">✗ <strong>74.2% F1</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- APPROACH 3: RETRIEVAL -->
+        <div class="approach">
+            <h2>3. Retrieval-Based <span class="winner-badge">🏆 WINNER</span></h2>
+            <p class="subtitle">ChromaDB finds top 10 relevant</p>
+            
+            <div class="mermaid">
+graph TD
+    A["User Query"] --> B[Embed]
+    B --> C[ChromaDB<br/>Search]
+    D[All 70 Tools<br/>+ Embeddings] -.-> C
+    C --> E[Top 10<br/>Tools]
+    E --> F[LLM Agent]
+    F --> G["Selected<br/>Tools"]
+    
+    style A fill:#E0F2FE,stroke:#0284C7,stroke-width:2px
+    style B fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px
+    style C fill:#DBEAFE,stroke:#3B82F6,stroke-width:2px
+    style D fill:#F1F5F9,stroke:#CBD5E1,stroke-dasharray: 5 5
+    style E fill:#10B981,stroke:#059669,stroke-width:3px,color:#FFF
+    style F fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px
+    style G fill:#DCFCE7,stroke:#10B981,stroke-width:2px
+            </div>
+            
+            <div class="stats stats-retrieval">
+                <h3>🏆 Best Overall:</h3>
+                <ul>
+                    <li><strong>93.9% F1</strong> - highest accuracy</li>
+                    <li><strong>82% fewer tokens</strong> (646)</li>
+                    <li><strong>78% cost reduction</strong></li>
+                    <li><strong>No router dependency</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- APPROACH 4: HYBRID -->
+        <div class="approach">
+            <h2>4. Hybrid</h2>
+            <p class="subtitle">Route + retrieve (8 tools)</p>
+            
+            <div class="mermaid">
+graph TD
+    A["User Query"] --> B[Router]
+    B --> C[Category<br/>15 tools]
+    C --> D[Retrieve<br/>Top 8]
+    D --> E[LLM Agent]
+    E --> F["Selected<br/>Tools"]
+    
+    style A fill:#E0F2FE,stroke:#0284C7,stroke-width:2px
+    style B fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px
+    style C fill:#DBEAFE,stroke:#3B82F6,stroke-width:2px
+    style D fill:#A855F7,stroke:#9333EA,stroke-width:2px,color:#FFF
+    style E fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px
+    style F fill:#DCFCE7,stroke:#10B981,stroke-width:2px
+            </div>
+            
+            <div class="stats stats-hybrid">
+                <h3>⚖️ Most Efficient:</h3>
+                <ul>
+                    <li class="pros">✓ <strong>564 tokens</strong> - lowest</li>
+                    <li class="pros">✓ <strong>Cheapest & fastest</strong></li>
+                    <li class="cons">✗ <strong>Inherits router errors</strong></li>
+                    <li class="cons">✗ <strong>77.3% F1</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                curve: 'basis',
+                padding: 15,
+                nodeSpacing: 60,
+                rankSpacing: 70
+            }
+        });
+    </script>
+</body>
+</html>

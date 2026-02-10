@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category-Based Approach - Tool Management</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #1E293B;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #64748B;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .diagram-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .stats {
+            margin-top: 20px;
+            padding: 20px;
+            background: #FEF9C3;
+            border-left: 4px solid #EAB308;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .stats h3 {
+            color: #854D0E;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .stats ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #854D0E;
+        }
+        .stats li {
+            margin: 5px 0;
+        }
+        .pros {
+            color: #065F46;
+        }
+        .cons {
+            color: #991B1B;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Approach 2: Category-Based</h1>
+        <p class="subtitle">Route to category first, then use ~15 tools</p>
+        
+        <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["User Query<br/>'Process refund for order<br/>and notify customer'"] --> B[Keyword Router]
+    
+    B -->|"'refund' keyword"| C[Customer Operations<br/>Category]
+    B -.->|Not selected| D[Inventory<br/>15 tools]
+    B -.->|Not selected| E[Orders<br/>15 tools]
+    B -.->|Not selected| F[Analytics<br/>13 tools]
+    B -.->|Not selected| G[Marketing<br/>12 tools]
+    
+    C --> H[Tool 1: process_refund]
+    C --> I[Tool 2: send_notification]
+    C --> J[Tool 3: create_ticket]
+    C --> K[...]
+    C --> L[Tool 15: block_customer]
+    
+    H --> M[LLM Agent]
+    I --> M
+    J --> M
+    K --> M
+    L --> M
+    
+    M --> N["Selected Tools:<br/>process_refund<br/>send_customer_notification"]
+    
+    style A fill:#E0F2FE,stroke:#0284C7,stroke-width:3px,color:#0C4A6E
+    style B fill:#FEF3C7,stroke:#F59E0B,stroke-width:3px,color:#92400E
+    style C fill:#DBEAFE,stroke:#3B82F6,stroke-width:3px,color:#1E40AF
+    style M fill:#FEF3C7,stroke:#F59E0B,stroke-width:3px,color:#92400E
+    style N fill:#DCFCE7,stroke:#10B981,stroke-width:3px,color:#065F46
+    
+    style D fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    style E fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    style F fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    style G fill:#F1F5F9,stroke:#CBD5E1,stroke-width:1px,stroke-dasharray: 5 5,color:#94A3B8
+    
+    style H fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0C4A6E
+    style I fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0C4A6E
+    style J fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0C4A6E
+    style K fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0C4A6E
+    style L fill:#E0F2FE,stroke:#0284C7,stroke-width:2px,color:#0C4A6E
+            </div>
+        </div>
+        
+        <div class="stats">
+            <h3>⚖️ Trade-offs:</h3>
+            <ul>
+                <li class="pros"><strong>✓ 76% token reduction</strong> (848 vs 3,663)</li>
+                <li class="pros"><strong>✓ 73% cost savings</strong></li>
+                <li class="pros"><strong>✓ Faster responses</strong> (1.72s vs 2.02s)</li>
+                <li class="cons"><strong>✗ Router is single point of failure</strong> (27% error rate)</li>
+                <li class="cons"><strong>✗ Can't handle cross-category queries</strong></li>
+                <li class="cons"><strong>✗ Lower accuracy</strong> (74.2% F1)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 80,
+                rankSpacing: 100
+            }
+        });
+    </script>
+</body>
+</html>

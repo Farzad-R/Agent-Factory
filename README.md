@@ -6,7 +6,7 @@ This project is a collection of hands-on examples that showcase advanced techniq
 
 ### List of projects:
 - [x] [semantic-caching](#semantic-caching)
-- [x] [llm-dynamic-tool-call](#llm-dynamic-tool-call)
+- [x] [llm-dynamic-tool-calling](#llm-dynamic-tool-calling)
 
 ## Project description:
 <!-- ================ -->
@@ -24,10 +24,10 @@ The project also includes a RAG chatbot with semantic caching built in, so you c
 **YouTube video:** [Link](https://youtu.be/9GxOsJ-kQtg?si=jVoVoQTZhT_6EUVp)
 
 <!-- ======================= -->
-<!-- llm-dynamic-tool-call -->
+<!-- llm-dynamic-tool-calling -->
 <!-- ======================= -->
-<a id="llm-dynamic-tool-call"></a>
-<h3><a style=" white-space:nowrap; " href="https://github.com/Farzad-R/Agent-Factory/tree/main/llm-dynamic-tool-call"><b>LLM Dynamic Tool Call:</b></a></h3>
+<a id="llm-dynamic-tool-calling"></a>
+<h3><a style=" white-space:nowrap; " href="https://github.com/Farzad-R/Agent-Factory/tree/main/llm-dynamic-tool-calling"><b>LLM Dynamic Tool calling:</b></a></h3>
 <p>
 This project tackles a common problem: how do you manage 70+ tools for an LLM agent without overwhelming the model or breaking your budget?
 
